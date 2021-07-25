@@ -9,7 +9,8 @@ class StudentController extends Controller
 {
     
     public function index(){
-        return view('crud');
+        $students = Student::latest()->get();
+        return view('crud',compact('students'));
     }
 
     //--------Store data-------------
