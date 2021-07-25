@@ -21,6 +21,14 @@
                   <div class="card-header">
                      All Students
                   </div>
+                  @if (session('update'))
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     <strong>{{ session('update') }}</strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  @endif
                   <div class="card-body">
                      <table class="table table-bordered">
                         <thead>
@@ -43,8 +51,9 @@
                               <td>{{$row->roll}}</td>
                               <td>{{$row->class}}</td>
                               <td>
-                                  <a href="" class="btn btn-sm btn-primary">Edit</a>
-                                  <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                  <a href="{{url('student/edit/'.$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
+
+                                  <a href="{{url('student/delete/'.$row->id)}}" class="btn btn-sm btn-danger">Delete</a>
                               </td>
                            </tr>
                            @endforeach
@@ -60,14 +69,15 @@
                   <div class="card-header">
                      Add New Student
                   </div>
-                  @if(session('success'))
+                  @if (session('success'))
                   <div class="alert alert-success alert-dismissible fade show" role="alert">
-                     <strong> {{session('success')}}</strong> 
+                     <strong>{{ session('success') }}</strong> 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   @endif
+
                   <div class="card-body">
                      <form action="{{url('student/store')}}" method="POST">
                          @csrf
