@@ -67,6 +67,13 @@ class StudentController extends Controller
   
          return redirect()->to('/crud')->with('update','Data Updated Successfully');
       }
+      
+      //-----student destroy------------
 
+      public function destroy($id){
+          Student::findOrFail($id)->delete();
+          return redirect()->back()->with('delete','Data Deleted Successfully');
+
+      }
     
 }

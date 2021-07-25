@@ -29,6 +29,16 @@
                     </button>
                   </div>
                   @endif
+                  
+                  @if (session('delete'))
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                     <strong>{{ session('delete') }}</strong> 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  @endif
+
                   <div class="card-body">
                      <table class="table table-bordered">
                         <thead>
@@ -53,7 +63,7 @@
                               <td>
                                   <a href="{{url('student/edit/'.$row->id)}}" class="btn btn-sm btn-primary">Edit</a>
 
-                                  <a href="{{url('student/delete/'.$row->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                                  <a href="{{url('student/destroy/'.$row->id)}}" onclick="return confirm('Are you sure to delete?')" class="btn btn-sm btn-danger">Delete</a>
                               </td>
                            </tr>
                            @endforeach
