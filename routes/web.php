@@ -20,3 +20,4 @@ Route::get('/', function () {
 
 // Route::get('/crud','StudentController@index');
 Route::get('/crud',[StudentController::class,'index']);
+Route::post('/student/store',[StudentController::class,'store']);
